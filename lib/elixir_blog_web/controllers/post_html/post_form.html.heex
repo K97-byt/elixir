@@ -1,0 +1,10 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:title]} type="text" label="Title" />
+  <.input field={f[:content]} type="textarea" label="Content" />
+  <.input field={f[:published]} type="checkbox" label="Published" />
+  <.input field={f[:author]} type="text" label="Author" />
+  <footer>
+    <.button variant="primary">Save Post</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>
