@@ -101,4 +101,14 @@ defmodule ElixirBlog.Blog do
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
   end
+
+    def list_posts(opts \\ []) do
+    limit = Keyword.get(opts, :limit, 10)
+
+    Post
+    |> where([p], p.published == true)
+    |> order_by([p], desc: p.inserted_at)
+    |> limit(^limit)
+    |> Repo.all()
+  end
 end
